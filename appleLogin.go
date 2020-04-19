@@ -67,13 +67,13 @@ func InitAppleConfig(teamID string, clientID string, redirectURI string, keyID s
 }
 
 //CreateCallbackURL create a callback URL for frontend
-func (a *AppleConfig) CreateCallbackURL(state string) string {
+func (a *AppleConfig) CreateCallbackURL(state string, scope string) string {
 	u := url.Values{}
 	u.Add("response_type", "code")
 	u.Add("redirect_uri", a.RedirectURI)
 	u.Add("client_id", a.ClientID)
 	u.Add("state", state)
-	u.Add("scope", "name email")
+	u.Add("scope", scope)
 	return "https://appleid.apple.com/auth/authorize?" + u.Encode()
 }
 
